@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Update</title>
+</head>
+<body>
+    <h1>Opdater Dyr</h1>
+
+    <form action="/update" method="post">
+        <div>
+            <input type="hidden" name="id" th:value="${anim.id}">
+            <input type="text" name="name" th:value="${anim.name}">
+
+        </div>
+        <div>
+            <input type="text" name="species" th:value="${anim.species}">
+        </div>
+        <div>
+            <input type="submit" value="Opdater">
+        </div>
+    </form>
+</body>
+</html>
