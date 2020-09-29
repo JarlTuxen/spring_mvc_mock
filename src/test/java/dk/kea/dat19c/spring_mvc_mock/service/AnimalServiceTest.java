@@ -18,7 +18,8 @@ class AnimalServiceTest {
 
     private static final long ANIMAL_ID = 5;
     @InjectMocks
-    AnimalService animalService; // Service to test
+    AnimalService animalService; // initialise Service to test with Mocks
+
     @Mock
     AnimalRepository mockedAnimalRepository; // Mocked repository that will return testdata
 
@@ -28,15 +29,16 @@ class AnimalServiceTest {
         // Instantiate mock repository
         MockitoAnnotations.initMocks(this);
 
-        // Instantiate service to test with mocked repository
-        animalService = new AnimalService();
+
     }
 
     @Test
     void read() {
 
+        Animal animal = new Animal(ANIMAL_ID, "Gummiged", "Entrepreneur");
+
         // Define what is returned when mock repository is called
-        Mockito.when(mockedAnimalRepository.read(ANIMAL_ID)).thenReturn(getSingleAnimal(ANIMAL_ID));
+        Mockito.when(mockedAnimalRepository.read(ANIMAL_ID)).thenReturn(animal);
 
         // Simple assertion on name - test service with mock injected
         assertEquals("Gummiged", animalService.read(ANIMAL_ID).getName());
