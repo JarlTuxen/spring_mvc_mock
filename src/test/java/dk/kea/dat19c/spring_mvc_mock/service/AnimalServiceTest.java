@@ -8,10 +8,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.times;
 
 class AnimalServiceTest {
@@ -45,11 +43,6 @@ class AnimalServiceTest {
 
         // Test that read gets called exactly once when service is called
         Mockito.verify(mockedAnimalRepository, times(1)).read(5);
-    }
-
-    private Animal getSingleAnimal(long id){
-        return new Animal(id, "Gummiged", "entreprenørdyr");
-
     }
 
 }
