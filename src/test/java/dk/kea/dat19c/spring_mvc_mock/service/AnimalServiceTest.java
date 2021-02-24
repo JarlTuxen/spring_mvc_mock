@@ -42,7 +42,7 @@ class AnimalServiceTest {
         assertEquals("Gummiged", animalService.read(ANIMAL_ID).getName());
 
         // Test that read gets called exactly once when service is called
-        Mockito.verify(mockedAnimalRepository, times(1)).read(5);
+        Mockito.verify(mockedAnimalRepository, times(1)).read(ANIMAL_ID);
     }
 
 }
