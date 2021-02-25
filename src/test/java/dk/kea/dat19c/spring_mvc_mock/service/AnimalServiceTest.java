@@ -27,7 +27,9 @@ class AnimalServiceTest {
     @BeforeEach
     void setUp() {
         // Instantiate mock repository
-        MockitoAnnotations.initMocks(this); //Mockito 3.3.6 skal være openMocks
+        // Mockito 3.3.6 skal være openMocks - man kan så explicit lave close i AfterEach:
+        // https://www.javadoc.io/doc/org.mockito/mockito-core/3.4.0/org/mockito/MockitoAnnotations.html
+        MockitoAnnotations.initMocks(this);
 
         //arrange
         //definer dummydata - ANIMAL_ID er defineret som konstant 5
