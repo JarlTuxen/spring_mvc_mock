@@ -8,10 +8,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.times;
 
+@SpringBootTest
 class AnimalServiceTest {
 
     private static final long ANIMAL_ID = 5;
@@ -27,21 +29,24 @@ class AnimalServiceTest {
         // Instantiate mock repository
         MockitoAnnotations.initMocks(this);
 
-
+        //arrange
+        //definer dummydata - ANIMAL_ID er defineret som konstant 5
+        Animal animal = new Animal(ANIMAL_ID, "Gummiged", "Entrepreneur");
+        // Define what is returned when mock repository is called
+        Mockito.when(mockedAnimalRepository.read(ANIMAL_ID)).thenReturn(animal);
     }
 
     @Test
     void read() {
+        //act
+        String name = animalService.read(ANIMAL_ID).getName();
 
-        Animal animal = new Animal(ANIMAL_ID, "Gummiged", "Entrepreneur");
-
-        // Define what is returned when mock repository is called
-        Mockito.when(mockedAnimalRepository.read(ANIMAL_ID)).thenReturn(animal);
-
+        //assert
         // Simple assertion on name - test service with mock injected
-        assertEquals("Gummiged", animalService.read(ANIMAL_ID).getName());
+        assertEquals("Gummiged", name);
 
         // Test that read gets called exactly once when service is called
+        //Mockito.verify(mockedAnimalRepository).read(4); //fejl da der forventes 5
         Mockito.verify(mockedAnimalRepository, times(1)).read(ANIMAL_ID);
     }
 
