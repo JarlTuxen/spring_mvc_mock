@@ -27,7 +27,7 @@ class AnimalServiceTest {
     @BeforeEach
     void setUp() {
         // Instantiate mock repository
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.initMocks(this); //Mockito 3.3.6 skal være openMocks
 
         //arrange
         //definer dummydata - ANIMAL_ID er defineret som konstant 5
